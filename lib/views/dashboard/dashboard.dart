@@ -1,5 +1,7 @@
 import 'package:family_account_flutter_app/Drawer/drawer.component.dart';
+import 'package:family_account_flutter_app/components/common/appbar.component.dart';
 import 'package:family_account_flutter_app/components/dashboard/dashboard_card.dart';
+import 'package:family_account_flutter_app/types/dashboard_data.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -16,31 +18,15 @@ class _DashboardState extends State<Dashboard> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
+    final List<Map<String, String>> items = [
+      {"key": "Today's Income", "value": "5432.10"},
+      {"key": "Today's Expenditure", "value": "3210.40"},
+      {"key": "Total Income", "value": "5432.10"},
+      {"key": "Total Expenditure", "value": "3210.40"},
+    ];
+
     return Scaffold(
-      appBar: AppBar(
-        // automaticallyImplyLeading: false, // Remove the back button
-        iconTheme: IconThemeData(
-          color: Color(0XFFFFFFFF),
-        ), // Change the color of the drawer icon
-        backgroundColor: Color(0XFF000000),
-        title: Text(
-          'Dazzle Group of Company',
-          style: TextStyle(
-            color: Color(0XFFFFFFFF),
-            fontSize: 15,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () => {},
-            icon: Icon(
-              Icons.account_circle,
-              color: Color(0XFFFFFFFF),
-            ),
-          )
-        ],
-      ),
+      appBar: CustomAppBar(),
       drawer: DrawerComponent(),
       body: Container(
         width: double.infinity, // 100% width
@@ -76,31 +62,24 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    DashboardCard(
-                      title: "Today's Income",
-                      value: "2131.00",
+                SizedBox(
+                  height:
+                      screenHeight * 0.5, // Set a fixed height for the GridView
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // Number of columns
+                      crossAxisSpacing: 10, // Horizontal spacing between items
+                      mainAxisSpacing: 10, // Vertical spacing between items
+                      childAspectRatio: 1.8, // Aspect ratio of each item
                     ),
-                    DashboardCard(
-                      title: "Today's Expenditure",
-                      value: "3121.00",
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    DashboardCard(
-                      title: "Total Income",
-                      value: "2131.00",
-                    ),
-                    DashboardCard(
-                      title: "Total Expenditure",
-                      value: "3121.00",
-                    ),
-                  ],
+                    padding: EdgeInsets.all(10), // Padding around the grid
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return DashboardCard(
+                          title: items[index]['key']!,
+                          value: items[index]['value']!);
+                    },
+                  ),
                 ),
               ],
             ),

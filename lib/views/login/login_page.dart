@@ -93,8 +93,9 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.text,
                       ),
                       CheckBoxComponent(
-                          isChecked: isSavePasswordChecked,
-                          forText: 'Save Password'),
+                        isChecked: isSavePasswordChecked,
+                        forText: 'Save Password',
+                      ),
                       ButtonComponent(
                         labelText: 'Login',
                         onClicked: handleLoginButtonPress,

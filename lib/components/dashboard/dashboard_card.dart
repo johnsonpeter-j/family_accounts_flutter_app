@@ -14,7 +14,7 @@ class DashboardCard extends StatelessWidget {
 
     return SizedBox(
       width: screenWidth * 0.45,
-      height: screenHeight * 0.20,
+      height: screenHeight * 0.10,
       child: Card(
         elevation: 4, // Shadow effect
         shape: RoundedRectangleBorder(
@@ -30,7 +30,7 @@ class DashboardCard extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
             ),
-            Text("\$ ${value}"),
+            Text("\$ $value"),
           ],
         ),
       ),

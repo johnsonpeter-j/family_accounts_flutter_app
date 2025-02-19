@@ -15,8 +15,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: new BoxDecoration(
-            gradient: new LinearGradient(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [const Color(0XFF014E9D), const Color(0XFF6CB1F7)],
