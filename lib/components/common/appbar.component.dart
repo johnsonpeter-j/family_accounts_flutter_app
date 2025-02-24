@@ -22,14 +22,76 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(
-          onPressed: () => {},
+        // IconButton(
+        //   onPressed: () => {},
+        // icon: Icon(
+        //   Icons.account_circle,
+        //   color: Color(0XFFFFFFFF),
+        // ),
+        // )
+        PopupMenuButton<String>(
           icon: Icon(
             Icons.account_circle,
             color: Color(0XFFFFFFFF),
-          ),
-        )
+          ), // Icon for the popup menu
+          onSelected: (String value) {
+            // Handle the selected value
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Selected: $value')),
+            );
+          },
+          itemBuilder: (BuildContext context) {
+            return [
+              // Custom heading
+              PopupMenuItem<String>(
+                enabled: false, // Disable selection
+                child: Center(
+                  child: Text(
+                    'Profile',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 13,
+                    ),
+                  ),
+                ),
+              ),
+              // PopupMenuDivider(), // Divider
+              reusablePopupMenuItem(
+                  Icons.history, 'Update Profile', 'UPDATE_PROFILE'),
+              reusablePopupMenuItem(Icons.lock_reset_outlined,
+                  'Change Password', 'CHANGE_PASSWORD'),
+              reusablePopupMenuItem(Icons.logout, 'Logout', 'LOGOUT'),
+            ];
+          },
+        ),
       ],
+    );
+  }
+
+  // Reusable PopupMenuItem widget
+  PopupMenuItem<String> reusablePopupMenuItem(
+      IconData icon, String label, String value) {
+    return PopupMenuItem<String>(
+      value: value,
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 15,
+          ), // Icon for the option
+          SizedBox(width: 8), // Spacing between icon and text
+          Text(
+            label,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

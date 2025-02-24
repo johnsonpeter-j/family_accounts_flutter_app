@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class DashboardCard extends StatelessWidget {
   final String title;
   final String value;
-  const DashboardCard({super.key, required this.title, required this.value});
+  final Color textColor;
+  const DashboardCard(
+      {super.key,
+      required this.title,
+      required this.value,
+      required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,13 @@ class DashboardCard extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
             ),
-            Text("\$ $value"),
+            SizedBox(
+              height: 40,
+            ),
+            Text(
+              "\$ $value",
+              style: TextStyle(color: textColor),
+            ),
           ],
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:family_account_flutter_app/Drawer/drawer.component.dart';
 import 'package:family_account_flutter_app/components/common/appbar.component.dart';
 import 'package:family_account_flutter_app/components/dashboard/dashboard_card.dart';
-import 'package:family_account_flutter_app/types/dashboard_data.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -76,8 +75,10 @@ class _DashboardState extends State<Dashboard> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       return DashboardCard(
-                          title: items[index]['key']!,
-                          value: items[index]['value']!);
+                        title: items[index]['key']!,
+                        value: items[index]['value']!,
+                        textColor: (index % 2 == 0) ? Colors.red : Colors.green,
+                      );
                     },
                   ),
                 ),
