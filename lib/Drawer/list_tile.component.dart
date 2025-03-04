@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class ListTileComponent extends StatefulWidget {
   final String labelText;
   final IconData icon;
+  final VoidCallback onTabFunc;
   const ListTileComponent(
-      {super.key, required this.labelText, required this.icon});
+      {super.key,
+      required this.labelText,
+      required this.icon,
+      required this.onTabFunc});
 
   @override
   State<ListTileComponent> createState() => _ListTileComponentState();
@@ -17,7 +21,7 @@ class _ListTileComponentState extends State<ListTileComponent> {
       leading: Icon(
         widget.icon,
         size: 15,
-          color: Color(0XFFFFFFFF),
+        color: Color(0XFFFFFFFF),
       ),
       title: Text(
         widget.labelText,
@@ -26,7 +30,7 @@ class _ListTileComponentState extends State<ListTileComponent> {
           color: Color(0XFFFFFFFF),
         ),
       ),
-      onTap: () {},
+      onTap: widget.onTabFunc,
     );
   }
 }

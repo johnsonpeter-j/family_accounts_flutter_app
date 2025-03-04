@@ -1,3 +1,4 @@
+import 'package:family_account_flutter_app/views/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,12 +14,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Color(0XFFFFFFFF),
       ), // Change the color of the drawer icon
       backgroundColor: Color(0XFF000000),
-      title: Text(
-        'Dazzle Group of Company',
-        style: TextStyle(
-          color: Color(0XFFFFFFFF),
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
+      title: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Dashboard()),
+          );
+        },
+        child: Text(
+          'Dazzle Group of Company',
+          style: TextStyle(
+            color: Color(0XFFFFFFFF),
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
       actions: [

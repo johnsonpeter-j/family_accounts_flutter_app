@@ -39,72 +39,75 @@ class _LoginPageState extends State<LoginPage> {
             const Color(0XFF6CB1F7),
           ],
         )),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: Color(0XFFFFFCFC),
-                radius: 70,
-                child: Icon(
-                  Icons.home,
-                  color: Color(0XFF014E9D),
-                  size: 54.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
-                ), //Text
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                child: Text(
-                  "Family Accounts",
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Color(0XFFFFFCFC),
+                  radius: 70,
+                  child: Icon(
+                    Icons.home,
+                    color: Color(0XFF014E9D),
+                    size: 54.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ), //Text
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  child: Text(
+                    "Family Accounts",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0XFFFFFFFF)),
+                  ),
+                ),
+                Text(
+                  "Login",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Color(0XFFFFFFFF)),
                 ),
-              ),
-              Text(
-                "Login",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0XFFFFFFFF)),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 30),
-                    child: Column(children: [
-                      FormFieldComponent(
-                        title: 'Username',
-                        placeholderText: 'Username',
-                        errorText: '',
-                        controller: usernameController,
-                        keyboardType: TextInputType.emailAddress,
-                      ),
-                      FormFieldComponent(
-                        title: 'Password',
-                        placeholderText: 'Password',
-                        errorText: '',
-                        controller: passwordController,
-                        keyboardType: TextInputType.text,
-                      ),
-                      CheckBoxComponent(
-                        isChecked: isSavePasswordChecked,
-                        forText: 'Save Password',
-                      ),
-                      ButtonComponent(
-                        labelText: 'Login',
-                        onClicked: handleLoginButtonPress,
-                      ),
-                    ]),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 30),
+                      child: Column(children: [
+                        FormFieldComponent(
+                          title: 'Username',
+                          placeholderText: 'Username',
+                          errorText: '',
+                          controller: usernameController,
+                          keyboardType: TextInputType.emailAddress,
+                        ),
+                        FormFieldComponent(
+                          title: 'Password',
+                          placeholderText: 'Password',
+                          errorText: '',
+                          controller: passwordController,
+                          keyboardType: TextInputType.text,
+                        ),
+                        CheckBoxComponent(
+                          isChecked: isSavePasswordChecked,
+                          forText: 'Save Password',
+                        ),
+                        ButtonComponent(
+                          labelText: 'Login',
+                          onClicked: handleLoginButtonPress,
+                        ),
+                      ]),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

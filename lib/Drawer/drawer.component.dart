@@ -1,5 +1,7 @@
 import 'package:family_account_flutter_app/Drawer/list_tile.component.dart';
 import 'package:family_account_flutter_app/Drawer/list_title.component.dart';
+import 'package:family_account_flutter_app/views/add_entry/AddEntry.dart';
+import 'package:family_account_flutter_app/views/transactions/transaction.dart';
 import 'package:flutter/material.dart';
 
 class DrawerComponent extends StatefulWidget {
@@ -27,20 +29,33 @@ class _DrawerComponentState extends State<DrawerComponent> {
           ),
           ListTitleTextComponent(title: 'Income/Expenditures'),
           ListTileComponent(
-            labelText: 'Data Entry',
-            icon: Icons.add,
-          ),
+              labelText: 'Data Entry',
+              icon: Icons.add,
+              onTabFunc: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AddEntry()),
+                );
+              }),
           ListTileComponent(
             labelText: 'View Transactions',
             icon: Icons.account_balance_wallet_outlined,
+            onTabFunc: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Transaction()),
+              );
+            },
           ),
           ListTileComponent(
             labelText: 'Search',
             icon: Icons.search,
+            onTabFunc: () {},
           ),
           ListTileComponent(
             labelText: 'Report',
             icon: Icons.report_gmailerrorred_sharp,
+            onTabFunc: () {},
           ),
           Divider(
             height: 2,
@@ -49,14 +64,17 @@ class _DrawerComponentState extends State<DrawerComponent> {
           ListTileComponent(
             labelText: 'Stock Graph',
             icon: Icons.arrow_right_outlined,
+            onTabFunc: () {},
           ),
           ListTileComponent(
             labelText: 'Bar Graph',
             icon: Icons.star_border,
+            onTabFunc: () {},
           ),
           ListTileComponent(
             labelText: 'Candle Stick Graph',
             icon: Icons.stars_sharp,
+            onTabFunc: () {},
           ),
           Divider(
             height: 2,
@@ -65,14 +83,17 @@ class _DrawerComponentState extends State<DrawerComponent> {
           ListTileComponent(
             labelText: 'Update Profile',
             icon: Icons.history,
+            onTabFunc: () {},
           ),
           ListTileComponent(
             labelText: 'Change Password',
             icon: Icons.lock_reset_outlined,
+            onTabFunc: () {},
           ),
           ListTileComponent(
             labelText: 'Logout',
             icon: Icons.logout,
+            onTabFunc: () {},
           ),
         ],
       ),

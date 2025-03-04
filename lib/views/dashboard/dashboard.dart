@@ -40,49 +40,54 @@ class _DashboardState extends State<Dashboard> {
             ],
           ),
         ),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: screenHeight * 0.02,
-              left: screenWidth * 0.025,
-              right: screenWidth * 0.025,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: screenWidth,
-                  height: screenHeight * 0.4,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage("https://picsum.photos/250?image=9"),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: screenHeight * 0.02,
+                left: screenWidth * 0.025,
+                right: screenWidth * 0.025,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: screenWidth,
+                    height: screenHeight * 0.4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image:
+                            NetworkImage("https://picsum.photos/250?image=9"),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height:
-                      screenHeight * 0.5, // Set a fixed height for the GridView
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Number of columns
-                      crossAxisSpacing: 10, // Horizontal spacing between items
-                      mainAxisSpacing: 10, // Vertical spacing between items
-                      childAspectRatio: 1.8, // Aspect ratio of each item
+                  SizedBox(
+                    height: screenHeight *
+                        0.5, // Set a fixed height for the GridView
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Number of columns
+                        crossAxisSpacing:
+                            10, // Horizontal spacing between items
+                        mainAxisSpacing: 10, // Vertical spacing between items
+                        childAspectRatio: 1.8, // Aspect ratio of each item
+                      ),
+                      padding: EdgeInsets.all(10), // Padding around the grid
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        return DashboardCard(
+                          title: items[index]['key']!,
+                          value: items[index]['value']!,
+                          textColor:
+                              (index % 2 == 0) ? Colors.red : Colors.green,
+                        );
+                      },
                     ),
-                    padding: EdgeInsets.all(10), // Padding around the grid
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      return DashboardCard(
-                        title: items[index]['key']!,
-                        value: items[index]['value']!,
-                        textColor: (index % 2 == 0) ? Colors.red : Colors.green,
-                      );
-                    },
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
