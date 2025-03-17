@@ -1,6 +1,7 @@
 import 'package:family_account_flutter_app/Drawer/list_tile.component.dart';
 import 'package:family_account_flutter_app/Drawer/list_title.component.dart';
 import 'package:family_account_flutter_app/views/add_entry/AddEntry.dart';
+import 'package:family_account_flutter_app/views/search/search.dart';
 import 'package:family_account_flutter_app/views/transactions/transaction.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,12 @@ class _DrawerComponentState extends State<DrawerComponent> {
           ListTileComponent(
             labelText: 'Search',
             icon: Icons.search,
-            onTabFunc: () {},
+            onTabFunc: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchView()),
+              );
+            },
           ),
           ListTileComponent(
             labelText: 'Report',
